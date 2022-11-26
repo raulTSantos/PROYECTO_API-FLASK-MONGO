@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 from .config import Config
 from app.routes.principal_router import principal_bp
+from app.routes.character_router import character_bp
 
 
 def create_app() -> Flask :
@@ -12,7 +13,8 @@ def create_app() -> Flask :
 
     app.config.from_object(Config)
 
-    app.register_blueprint(principal_bp)
     #db = SQLAlchemy(app)
+    app.register_blueprint(principal_bp)
+    app.register_blueprint(character_bp)
 
     return app
