@@ -19,8 +19,14 @@ def retrieve_id():
         payload ={"page":n}
         rsp= requests.get(urlx,params=payload)
         data = rsp.json()
-        id_list =[x['id']  for x in data['results']]
+        #cuidado : id_list al ser una lista sufre cambios por referencia
+        #aqui no lamacena solo pasa referencia
+        # ejm: id_list=[bucle_1] termina el bucle, luego, id_list=[bucle_2] 
+        #id_list =[x['id']  for x in data['results']]
 
+        #Aqui si Almacena
+        id_list +=[x['id']  for x in data['results']]
+        
     return id_list
 
 def populate_character(id):
