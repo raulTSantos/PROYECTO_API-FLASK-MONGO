@@ -7,21 +7,23 @@
         <div class="mt-5">
             <div class="album">
                 <div class="row">
+                  {% for obj in character_list_vw %}
                     <div class="col-md-4">
                         <div class="card mb-3" style="max-width: 580px;">
                             <div class="row">
                               <div class="col-md-5">
-                                <img src="https://via.placeholder.com/155x279?text=Placeholder" alt="...">
+                                <img src="{{ obj.image }}" alt="..." class="w-100 h-100">
                               </div>
                               <div class="col-md-7">
                                 <div class="card-body">
-                                  <h5 class="card-title">MI NOMBRE</h5>
-                                  <small class="text"><span class="badge badge-danger rounded-circle">  </span> Dead - Alien</small><br>
+                                  <h5 class="card-title">{{ obj.name }}</h5>
+                                  <small class="text">
+                                    <span class="{{ 'badge-danger' if obj.status =='Dead' else 'badge-success' }} badge  rounded-circle d-inline-block" style="height:10px;width: 10px;"></span> {{ obj.status }} - {{ obj.species }}</small><br>
                                   <div>
                                     <p class="card-text">
                                         <small class="text-muted">Last know location:</small><br>
                                         <small>
-                                            This is a wider card with supporting text
+                                          {{ obj.location }}
                                         </small>     
                                     </p>
                                   </div>
@@ -29,22 +31,19 @@
                                     <p class="card-text">
                                         <small class="text-muted">first see in:</small><br>
                                         <small>
-                                            This is a wider card with supporting text
+                                          {{ obj.origin }}
                                         </small>     
                                     </p>
                                   </div>
 
-                                  <a type="button" class="btn btn-sm btn-outline-secondary mt-1" href="">Detalles</a>
+                                  <a type="button" class="btn btn-sm btn-outline-secondary mt-1" href="/character/details/{{ obj.id }}">Detalles</a>
+                                  <a type="button" class="btn btn-sm btn-outline-secondary mt-1" href="{{ url_for('character.show_details' ,id=obj.id)}}">Detalles 2</a>
                                 </div>
                               </div>
                             </div>
                           </div>
                     </div>
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4">
-
-                    </div>
+                  {% endfor %}
                 </div>
             </div>
             

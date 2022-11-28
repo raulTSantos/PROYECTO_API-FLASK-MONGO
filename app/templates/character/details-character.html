@@ -1,0 +1,44 @@
+<!-- uso de la plantilla base -->
+{% extends "base.html" %}
+    <!-- titulo dinamico -->
+    {% block title %}Index{% endblock %}
+
+    {% block content %}
+        <div class="mt-5">
+          <div class="card">
+            <div class="card-header">
+              DETALLE DE PERSONAJE:<strong class="text-uppercase"> {{obj.name}} </strong>
+            </div>
+            <div class="card-body">
+              <img src="{{obj.image}}" alt="" class="img-thumbnail float-left">
+              <ul class="list-group">
+                <ul class="list-group-item">
+                  <small class="text-muted">Origin: </small>{{obj.origin}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Gender: </small>{{obj.gender}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Type: </small>{{obj.type}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Status: </small>{{obj.status}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Location: </small>{{obj.location}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Species: </small>{{obj.species}}</ul>
+                <ul class="list-group-item">
+                  <small class="text-muted">Episode: </small>{{obj.episode}}</ul>
+              </ul>
+
+            </div>
+            <div class="card-footer">
+              <div class="float-right">
+                <a href="/character/list" class="btn btn-info" >ATRAS</a>
+                <button class="btn btn-warning ">EDITAR</button>
+                <button class="btn btn-danger">ELIMINAR</button>
+              </div>
+            </div>
+          </div>  
+        </div>
+    {% endblock %}
+
+    {% block scripts %}
+    {% endblock %}
